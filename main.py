@@ -1,5 +1,5 @@
-import mysql.connector as conn
-import os
+from train_details import train_details
+from run_operations import run
 
 def header():
     print("="*60)
@@ -15,7 +15,7 @@ def menu():
     print("*"*60)
     print("\t\t RAILWAY MANAGEMENT")
     print("*"*60)
-    print("1. Train Details")
+    print("1. Enter Train Details")
     print("2. Ticket Reservation")
     print("3. Ticket Cancellation")
     print("4. Display PNR status")
@@ -23,30 +23,22 @@ def menu():
     print("*"*60)
 
     choice = input("Enter desired operation's number: ")
-    if choice == '1':
+    chosen_operation = run(choice)
+    if n == '1':
+        train_details()
+    elif n == '2':
         pass
-    elif choice == '2':
+    elif n == '2':
         pass
-    elif choice == '2':
+    elif n == '3':
         pass
-    elif choice == '3':
+    elif n == '4':
         pass
-    elif choice == '4':
-        pass
-    elif choice == '5':
-        pass
+    elif n == '5':
+        exit()
     else:
-        print("INVALID INPUT! TRY AGAIN...\n")
+        print("INVALID INPUT! TRY AGAIN...")
         menu()
 
-
-def main():
-    header()
-
-    raildb = conn.connect(host='localhost', user='root', password='root', database='railway')
-    cursor = raildb.cursor()
-
-    menu()
-
-
-main()
+header()
+menu()
