@@ -1,15 +1,18 @@
 import mysql.connector as conn
+import main
 
 raildb = conn.connect(host='localhost', user='root', password='root', database='railway')
 cursor = raildb.cursor()
+
+inputting_trains = True
 
 def header():
     print("#"*60)
     print("\t\t ENTER TRAIN DETAILS")
     print("#"*60)
 
-def train_details():
-    while True:
+def train_details_input():
+    while inputting_trains:
         header()
 
         trainData = {}
@@ -44,4 +47,5 @@ def train_details():
             if again == 'y':
                 pass
             else:
-                break
+                inputting_trains = False
+                main.menu()

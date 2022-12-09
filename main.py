@@ -1,5 +1,4 @@
-from train_details import train_details
-from run_operations import run
+import train_details
 
 def header():
     print("="*60)
@@ -23,18 +22,17 @@ def menu():
     print("*"*60)
 
     choice = input("Enter desired operation's number: ")
-    chosen_operation = run(choice)
-    if n == '1':
-        train_details()
-    elif n == '2':
+    if choice == '1':
+        train_details.train_details_input()
+    elif choice == '2':
         pass
-    elif n == '2':
+    elif choice == '2':
         pass
-    elif n == '3':
+    elif choice == '3':
         pass
-    elif n == '4':
+    elif choice == '4':
         pass
-    elif n == '5':
+    elif choice == '5':
         exit()
     else:
         print("INVALID INPUT! TRY AGAIN...")
