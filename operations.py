@@ -1,19 +1,34 @@
 import mysql.connector as conn
-import main
+
+import display as dp
 
 raildb = conn.connect(host='localhost', user='root', password='root', database='railway')
 cursor = raildb.cursor()
 
-inputting_trains = True
+def choose_operation():
+    dp.menu()
 
-def header():
-    print("#"*60)
-    print("\t\t ENTER TRAIN DETAILS")
-    print("#"*60)
+    choice = input("Enter desired operation's number: ")
+    if choice == '1':
+        train_details()
+    elif choice == '2':
+        pass
+    elif choice == '2':
+        pass
+    elif choice == '3':
+        pass
+    elif choice == '4':
+        pass
+    elif choice == '5' or 'q':
+        exit()
+    else:
+        print("INVALID INPUT! TRY AGAIN...")
+        choose_operation()
 
-def train_details_input():
+def train_details():
+    inputting_trains = True
     while inputting_trains:
-        header()
+        dp.op1_header()
 
         trainData = {}
         tname = input("Enter train name: ")
@@ -39,7 +54,7 @@ def train_details_input():
         confirm = input("Continue? y/n: ").lower()
         if confirm == 'y':
             cursor.execute(f"INSERT INTO trains({clm_headers}) VALUES{data}")
-            #raildb.commit()
+            raildb.commit()
             print("\t\t DATA INSERTED")
             print("#"*60)
             
@@ -48,4 +63,4 @@ def train_details_input():
                 pass
             else:
                 inputting_trains = False
-                main.menu()
+                choose_operation()
