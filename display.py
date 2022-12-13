@@ -23,14 +23,9 @@ def menu():
 
     choice = input("Enter desired operation's number: ")
     return choice
-    
-def op1_header():
-    print("#"*60)
-    print("\t\t ENTER TRAIN DETAILS")
-    print("#"*60)
 
-def op2_header():
+def make_header(header_text):
     print("#"*60)
-    print("\t\t ENTER PASSENGER DETAILS")
+    print("\t\t",header_text)
     print("#"*60)
 

@@ -1,11 +1,11 @@
 import display as dp
 
-~ train_clm_headers = "tname, tnum, AC1, AC2, AC3, slp"
+# train_clm_headers = "tname, tnum, AC1, AC2, AC3, slp"
 
 def train_details(db, cursor):
     inputting_trains = True
     while inputting_trains:
-        dp.op1_header()
+        dp.make_header("ENTER TRAIN DETAILS")
 
         trainData = {}
         tname = input("Enter train name: ")

@@ -3,6 +3,7 @@ import mysql.connector as conn
 import display as dp
 from train_details import train_details
 from ticket_reservation import ticket_reservation
+from cancel_ticket import cancel_ticket
 
 raildb = conn.connect(host='localhost', user='root', password='root', database='railway')
 cursor = raildb.cursor()
@@ -16,10 +17,8 @@ while True:
         train_details(raildb, cursor)
     elif chosen_op == '2':
         ticket_reservation(raildb, cursor)
-    elif chosen_op == '2':
-        pass
     elif chosen_op == '3':
-        pass
+        cancel_ticket(raildb, cursor)
     elif chosen_op == '4':
         pass
     elif chosen_op == '5':

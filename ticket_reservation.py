@@ -25,7 +25,7 @@ def ticket_reservation(db, cursor):
         if (tnum,) not in trains:
             return False
 
-    dp.op2_header()
+    dp.make_header("ENTER PASSENGER DETAILS")
 
     passenger_list = []
     amount = 0
