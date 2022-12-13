@@ -27,3 +27,5 @@ while True:
         break
     else:
         print("INVALID INPUT! TRY AGAIN...")
+
+raildb.close()

@@ -1,6 +1,7 @@
 import display as dp
+from seats import fill_seat, seats
 
-passenger_clm_headers = "pname, age, trainnum, pnum, class, ticket_price, pnr, status"
+# passenger_clm_headers = "pname, age, trainnum, pnum, class, ticket_price, pnr, status"
 
 
 def ticket_reservation(db, cursor):
@@ -29,15 +30,17 @@ def ticket_reservation(db, cursor):
 
     passenger_list = []
     amount = 0
-
+    
     pnum = int(input("Enter number of passengers: "))
     trainnum = int(input("Enter train number: "))
     pnr = get_pnr()
 
     if traincheck(trainnum) == False:
         print("~"*60)
-        print(f"No train with train number {trainnum} exists. Retry.")
+        print(f"No train with Train Number {trainnum} exists. Retry.")
         ticket_reservation(db, cursor)
+
+    avlbl_seats = seats(trainnum)
 
     for n in range(pnum):
         print("~"*60)
@@ -55,10 +58,15 @@ def ticket_reservation(db, cursor):
 
             if class_id <= 3:
                 clss = "AC" + str(class_id)
-                break
             elif class_id == 4:
                 clss = "SLP"
+
+            if avlbl_seats[clss] == 0:
+                print(f"No seats are available in {clss}.\n")
+            else:
+                avlbl_seats[clss] -= 1
                 break
+
         fare = get_fare(class_id)
         amount += fare
 
@@ -76,14 +84,14 @@ def ticket_reservation(db, cursor):
     
     if confirm == "y":
         for passenger in passenger_list:
-            insert_cmd = f"INSERT INTO passengers VALUES{passenger}"
-            cursor.execute(insert_cmd)
+            cursor.execute(f"INSERT INTO passengers VALUES{passenger}")
             db.commit()
+            fill_seat(trainnum, passenger[3])
         
         print("~"*60)
         print(f"\t Your PNR number is {pnr}.")
         print("~"*60)
-        print("\t\t DATA INSERTED")
+        print("\t\t RESERVATION MADE")
         print("~"*60)
     else:
         ticket_reservation(db, cursor)
