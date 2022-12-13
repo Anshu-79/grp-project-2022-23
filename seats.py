@@ -8,7 +8,6 @@ def seats(tnum, clss=None):
     
     cursor.execute(f"SELECT {classes} FROM trains WHERE tnum = {tnum}")
     data = cursor.fetchall()[0]
-    print(data)
     
     avlbl_seats = {'AC1':data[0], 'AC2':data[1], 'AC3':data[2], 'SLP':data[3]}
     if clss:
@@ -27,7 +26,7 @@ def fill_seat(tnum, clss):
 
 def free_seat(tnum, clss):
     avlbl_seats = seats(tnum, clss)
-    
+
     cursor.execute(f"UPDATE trains SET {clss} = {avlbl_seats+1} WHERE tnum = {tnum}")
     raildb.commit()
     

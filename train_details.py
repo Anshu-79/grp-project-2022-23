@@ -1,6 +1,5 @@
 import display as dp
 
-# train_clm_headers = "tname, tnum, AC1, AC2, AC3, slp"
 
 def train_details(db, cursor):
     inputting_trains = True

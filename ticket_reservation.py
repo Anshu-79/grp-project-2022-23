@@ -1,8 +1,6 @@
 import display as dp
 from seats import fill_seat, seats
 
-# passenger_clm_headers = "pname, age, trainnum, pnum, class, ticket_price, pnr, status"
-
 
 def ticket_reservation(db, cursor):
 
@@ -20,25 +18,23 @@ def ticket_reservation(db, cursor):
             pnr = pnrs[-1][0] + 1
         return pnr
 
-    def traincheck(tnum):
-        cursor.execute("SELECT tnum FROM trains")
-        trains = cursor.fetchall()
-        if (tnum,) not in trains:
-            return False
-
     dp.make_header("ENTER PASSENGER DETAILS")
 
     passenger_list = []
     amount = 0
     
     pnum = int(input("Enter number of passengers: "))
-    trainnum = int(input("Enter train number: "))
     pnr = get_pnr()
-
-    if traincheck(trainnum) == False:
-        print("~"*60)
-        print(f"No train with Train Number {trainnum} exists. Retry.")
-        ticket_reservation(db, cursor)
+    while True:
+        trainnum = int(input("Enter train number: "))
+    
+        cursor.execute("SELECT tnum FROM trains")
+        trains = cursor.fetchall()
+        if (trainnum,) not in trains:
+            print("~"*60)
+            print(f"No train with Train Number {trainnum} exists. Retry.")
+        else:
+            break
 
     avlbl_seats = seats(trainnum)
 

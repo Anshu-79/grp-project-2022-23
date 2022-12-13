@@ -4,6 +4,7 @@ import display as dp
 from train_details import train_details
 from ticket_reservation import ticket_reservation
 from cancel_ticket import cancel_ticket
+from seat_availability import seat_available
 
 raildb = conn.connect(host='localhost', user='root', password='root', database='railway')
 cursor = raildb.cursor()
@@ -20,7 +21,7 @@ while True:
     elif chosen_op == '3':
         cancel_ticket(raildb, cursor)
     elif chosen_op == '4':
-        pass
+        seat_available(raildb, cursor)
     elif chosen_op in ['5', 'q']:
         break
     else:
