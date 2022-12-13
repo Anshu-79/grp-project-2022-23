@@ -21,8 +21,16 @@ def menu():
     print("6. Quit")
     print("*"*60)
 
+    choice = input("Enter desired operation's number: ")
+    return choice
+    
 def op1_header():
     print("#"*60)
     print("\t\t ENTER TRAIN DETAILS")
+    print("#"*60)
+
+def op2_header():
+    print("#"*60)
+    print("\t\t ENTER PASSENGER DETAILS")
     print("#"*60)
 
