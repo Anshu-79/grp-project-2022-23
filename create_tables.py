@@ -17,10 +17,12 @@ cursor.execute("""CREATE TABLE passengers(
     pname VARCHAR(20),
     age INT,
     trainnum INT,
-    pnums INT,
+    pnum INT,
     class VARCHAR(3),
     ticket_price INT,
     pnr INT PRIMARY KEY,
-    status VARCHAR(10)
+    status VARCHAR(3)
     )""")
 
+raildb.commit()
+raildb.close()

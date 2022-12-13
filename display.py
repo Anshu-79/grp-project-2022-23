@@ -17,7 +17,8 @@ def menu():
     print("2. Ticket Reservation")
     print("3. Ticket Cancellation")
     print("4. Display PNR status")
-    print("5. Quit")
+    print("5. View Seat Availability")
+    print("6. Quit")
     print("*"*60)
 
 def op1_header():
