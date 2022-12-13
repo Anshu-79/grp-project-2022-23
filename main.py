@@ -21,9 +21,7 @@ while True:
         cancel_ticket(raildb, cursor)
     elif chosen_op == '4':
         pass
-    elif chosen_op == '5':
-        pass
-    elif chosen_op == '6' or 'q':
+    elif chosen_op in ['5', 'q']:
         break
     else:
         print("INVALID INPUT! TRY AGAIN...")

@@ -16,9 +16,8 @@ def menu():
     print("1. Enter Train Details")
     print("2. Ticket Reservation")
     print("3. Ticket Cancellation")
-    print("4. Display PNR status")
-    print("5. View Seat Availability")
-    print("6. Quit")
+    print("4. View Seat Availability")
+    print("5. Quit")
     print("*"*60)
 
     choice = input("Enter desired operation's number: ")
