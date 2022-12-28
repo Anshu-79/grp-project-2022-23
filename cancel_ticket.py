@@ -9,12 +9,12 @@ def cancel_ticket(db, cursor):
 
     cursor.execute(f"SELECT * FROM passengers WHERE pnr = {pnr}")
     data = cursor.fetchall()
-    tnum = data[0][2]
-
+    
     if len(data) == 0:
         print("No records are associated with given PNR number.")
     
     else:
+        tnum = data[0][2]
         amount = 0
         classes = []
         for record in data:
